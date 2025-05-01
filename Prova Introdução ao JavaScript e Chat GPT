@@ -1,0 +1,60 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javailson</title>
+</head>
+<script src="index.js">index</script>
+<body>
+    
+</body>
+</html>
+
+
+=================================================================================================================================================================
+
+jAVASCRIPT
+
+
+
+let numero1 = parseFloat(prompt("Digite o primeiro número:"));
+let numero2 = parseFloat(prompt("Digite o segundo número:"));
+
+
+if (isNaN(numero1) || isNaN(numero2)) {
+    console.log("Por favor, insira números válidos.");
+} else {
+    
+    let soma = numero1 + numero2;
+    let subtracao = numero1 - numero2;
+    let multiplicacao = numero1 * numero2;
+    let divisao = numero1 / numero2;
+   
+
+    
+    console.log(`Resultados das operações entre ${numero1} e ${numero2}:`);
+    console.log(`Adição: ${numero1} + ${numero2} = ${soma}`);
+    console.log(`Subtração: ${numero1} - ${numero2} = ${subtracao}`);
+    console.log(`Multiplicação: ${numero1} * ${numero2} = ${multiplicacao}`);
+    console.log(`Divisão: ${numero1} / ${numero2} = ${divisao}`);
+   
+
+
+    let resultado = numero1; 
+    
+    resultado += numero2; 
+    console.log(`Usando +=: ${numero1} += ${numero2} → ${resultado}`);
+    
+    resultado -= numero2; 
+    console.log(`Usando -=: ${numero1 + numero2} -= ${numero2} → ${resultado}`);
+    
+    resultado *= numero2; 
+    console.log(`Usando *=: ${numero1} *= ${numero2} → ${resultado}`);
+    
+    resultado /= numero2; 
+    console.log(`Usando /=: ${numero1 * numero2} /= ${numero2} → ${resultado}`);
+    
+}
