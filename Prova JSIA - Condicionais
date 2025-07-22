@@ -1,0 +1,46 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javailson</title>
+</head>
+
+<body>
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+JAVASCRIPT
+
+
+const idade = Number(prompt("Digite sua idade:"));
+const status = prompt("Você está registrado? (Digite 'sim' ou 'não')").toLowerCase();
+
+
+if (idade >= 18) {
+  alert("Você é maior de idade.");
+} else {
+  alert("Você é menor de idade.");
+}
+
+
+if (status === "sim") {
+  alert("Bem-vindo ao sistema!");
+} else if (status === "não") {
+  alert("Complete seu registro para acessar tudo.");
+} else {
+  alert("Status desconhecido.");
+}
+
+
+if (idade >= 18 && status === "sim") {
+  alert("Acesso completo liberado!");
+} else {
+  alert("Acesso limitado.");
+}
