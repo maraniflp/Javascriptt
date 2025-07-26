@@ -1,0 +1,62 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Nomes</title>
+</head>
+<body>
+    <h1>Cadastro de Nomes</h1>
+    <button id="iniciar">Começar</button>
+    <div id="resultados"></div>
+
+    
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+=================================================================================================================
+
+JAVASCRIPT
+
+document.getElementById("iniciar").addEventListener("click", function () {
+  document.getElementById("resultados").innerHTML = "";
+
+  let nomes = [];
+
+  while (true) {
+    let nome = prompt("Digite um nome ou 'sair' para terminar:");
+
+    if (nome === null || nome.toLowerCase() === "sair") {
+      break;
+    }
+
+    nome = nome.trim();
+    if (nome !== "") {
+      nomes.push(nome);
+    }
+  }
+
+  if (nomes.length === 0) {
+    document.getElementById("resultados").innerHTML =
+      "<p>Nenhum nome foi cadastrado.</p>";
+    return;
+  }
+
+  let listaNumerada = "<h2>Nomes Cadastrados:</h2><ol>";
+  for (let i = 0; i < nomes.length; i++) {
+    listaNumerada += `<li>${i + 1}: ${nomes[i]}</li>`;
+  }
+  listaNumerada += "</ol>";
+
+  let mensagens = "<h2>Um salve de boas vindas: </h2><ul>";
+  for (let nome of nomes) {
+    mensagens += `<li>olá ${nome} seja Bem-vindo!</li>`;
+  }
+  mensagens += "</ul>";
+
+  document.getElementById("resultados").innerHTML = listaNumerada + mensagens;
+});
