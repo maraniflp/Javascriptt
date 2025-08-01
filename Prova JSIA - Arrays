@@ -1,0 +1,100 @@
+HTML
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+  </head>
+  <body>
+    <h1>Lista de Compras</h1>
+
+    <div>
+      <input type="text" id="itemInput" placeholder="Digite um item" />
+      <button onclick="adicionarItem()">Adicionar</button>
+    </div>
+
+    <div>
+      <input type="number" id="indiceRemover" placeholder="Índice do item" />
+      <button onclick="removerItem()">Remover</button>
+    </div>
+
+    <div>
+      <input type="number" id="indiceAtualizar" placeholder="Índice" />
+      <input type="text" id="novoItem" placeholder="Novo item" />
+      <button onclick="atualizarItem()">Atualizar</button>
+    </div>
+
+    <div id="lista"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
+
+
+
+
+================================================================================================================================================
+
+JAVASCRIPT
+
+
+
+
+
+let listaCompras = [];
+
+
+function adicionarItem() {
+    const item = document.getElementById('itemInput').value;
+    if (item) {
+        listaCompras.push(item);
+        document.getElementById('itemInput').value = '';
+        exibirLista();
+    } else {
+        alert('Digite um item!');
+    }
+}
+
+
+function removerItem() {
+    const indice = parseInt(document.getElementById('indiceRemover').value);
+    if (!isNaN(indice) && indice >= 0 && indice < listaCompras.length) {
+        listaCompras.splice(indice, 1);
+        document.getElementById('indiceRemover').value = '';
+        exibirLista();
+    } else {
+        alert('Digite um índice válido!');
+    }
+}
+
+
+function atualizarItem() {
+    const indice = parseInt(document.getElementById('indiceAtualizar').value);
+    const novoItem = document.getElementById('novoItem').value;
+    if (!isNaN(indice) && indice >= 0 && indice < listaCompras.length && novoItem) {
+        listaCompras[indice] = novoItem;
+        document.getElementById('indiceAtualizar').value = '';
+        document.getElementById('novoItem').value = '';
+        exibirLista();
+    } else {
+        alert('Preencha ambos os campos corretamente!');
+    }
+}
+
+function exibirLista() {
+    const listaDiv = document.getElementById('lista');
+    listaDiv.innerHTML = '<h3>Itens:</h3>';
+    
+    if (listaCompras.length === 0) {
+        listaDiv.innerHTML += '<p>Lista vazia</p>';
+    } else {
+        listaDiv.innerHTML += '<ol>';
+        for (let i = 0; i < listaCompras.length; i++) {
+            listaDiv.innerHTML += `<li>${listaCompras[i]} (Índice: ${i})</li>`;
+        }
+        listaDiv.innerHTML += '</ol>';
+    }
+}
+
+exibirLista();
