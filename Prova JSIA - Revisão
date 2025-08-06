@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tarefas Simples</title>
+  </head>
+  <body>
+    <h1>Lista de Tarefas</h1>
+
+    <div>
+      <button onclick="adicionarTarefa()">Adicionar</button>
+      <button onclick="listarTarefas()">Listar</button>
+      <button onclick="removerTarefa()">Remover</button>
+      <button onclick="concluirTarefa()">Concluir</button>
+    </div>
+
+    <div id="lista"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
+
+
+
+
+==========================================================================================================================
+
+
+JAVASCRIPT
+
+
+let tarefas = [];
+
+function adicionarTarefa() {
+  const nome = prompt("Digite a tarefa:");
+  if (nome) {
+    tarefas.push(nome);
+    alert(`"${nome}" foi adicionada!`);
+  }
+}
+
+function listarTarefas() {
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "<h3>Suas Tarefas:</h3>";
+
+  if (tarefas.length === 0) {
+    lista.innerHTML += "<p>Nenhuma tarefa ainda.</p>";
+    return;
+  }
+
+  for (let numero = 0; numero < tarefas.length; numero++) {
+    lista.innerHTML += `
+            <div class="tarefa ${
+              tarefas[numero].includes("ok") ? "concluida" : "ok"
+            }">
+                ${numero + 1}. ${tarefas[numero]}
+            </div>
+        `;
+  }
+}
+
+function removerTarefa() {
+  const num = prompt("Digite o número da tarefa a remover:");
+  const indice = parseInt(num) - 1;
+
+  if (indice >= 0 && indice < tarefas.length) {
+    const removida = tarefas.splice(indice, 1);
+    alert(`"${removida}" foi removida!`);
+  } else {
+    alert("Número inválido!");
+  }
+}
+
+function concluirTarefa() {
+  const num = prompt("Digite o número da tarefa concluída:");
+  const indice = parseInt(num) - 1;
+
+  if (indice >= 0 && indice < tarefas.length) {
+    if (!tarefas[indice].includes("ok")) {
+      tarefas[indice] = "ok " + tarefas[indice];
+      alert("Tarefa concluída!");
+    } else {
+      alert("Já está concluída!");
+    }
+  } else {
+    alert("Número inválido!");
+  }
+}
